@@ -6,15 +6,16 @@
 
 ## 1. Diagrama de arquitectura
 
-_Describe o pega aquí tu diagrama (puedes usar texto, ASCII, o una imagen en `docs/`)._
+_Este es un diagrama de referencia. Reemplázalo por el tuyo a medida que diseñas tu stack._
 
-```
-[ Usuario ] ──▶ [ CloudFront (CDN) ] ──▶ [ Bucket S3 (privado) ]
-                                          
-                       [ DynamoDB: metadatos de portafolios ]
-```
+```mermaid
+flowchart LR
+    User([Usuario]) -->|HTTPS| CF["CloudFront<br/>(CDN global)"]
+    CF -->|lee objetos| S3["Bucket S3<br/>(privado)"]
+    DDB[("DynamoDB<br/>metadatos de portafolios")]
 
-_Reemplaza este diagrama por el tuyo._
+    CF -.registra/consulta metadatos.-> DDB
+```
 
 ---
 
